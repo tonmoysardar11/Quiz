@@ -4,13 +4,7 @@ import qContext from '../context/qcontext';
 const Play = () => {
 
   const context = useContext(qContext);
-  const {qlist, activeno, next, timer, anschange, option, cnf, cnfstate,disabled,btndisabled,point } = context;
-
-
-
-
-
-
+  const {qno,qlist, activeno, next, timer, anschange, option, cnf, cnfstate,disabled,btndisabled,point,finish } = context;
 
   return (
     <div className='d-flex justify-content-center align-items-center flex-column'>
@@ -62,11 +56,9 @@ const Play = () => {
 
         <button
           className={cnfstate ? 'btn btn-info mx-3' : 'btn btn-info mx-3 disabled'}
-          onClick={next}
+          onClick={activeno===qno?finish:next}
         >
-          Next
-          <i className="fa-solid fa-play mx-1">
-          </i>
+          {activeno===qno?'Finish':`Next <i className="fa-solid fa-play mx-1></i>`}
         </button>
       </div>
 
