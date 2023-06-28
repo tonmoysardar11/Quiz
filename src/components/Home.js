@@ -5,7 +5,7 @@ import qContext from '../context/qcontext'
 
 const Home = () => {
   const context = useContext(qContext);
-  const { qno,change,play } = context;
+  const { qno,qnochange,play } = context;
 
   return (
     <div className="start d-flex justify-content-center align-items-center flex-column">
@@ -19,7 +19,7 @@ const Home = () => {
       </ul>
       <form className='d-flex justify-content-center align-items-center'>
       <label htmlFor="qno" className="form-label mx-2 my-auto"><h6>Number of Questions</h6></label>
-      <input type="number" id='qno' className="form-control" placeholder='Enter Number of Questions' value={qno} onChange={change} style={{width:'50%'}} />
+      <input type="number" id='qno' className="form-control" placeholder='Enter Number of Questions' value={qno} onChange={qnochange} style={{width:'60px'}} />
       </form>
 
       <Link className={`btn btn-info my-3 ${qno===0?'disabled':''}`} role='button' to="/play" onClick={play}>Play <i className="fa-solid fa-play"></i></Link>

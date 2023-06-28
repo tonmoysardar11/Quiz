@@ -5,12 +5,14 @@ body{
   display: grid;
   place-content: center;
   height: 100vh;
+  background-color: rgb(22, 22, 22);
 }
 .app{
   border-radius: 20px;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px aliceblue;
   padding: 10px;
-  background-color: rgb(215, 210, 210);
+  background-color: rgb(0, 0, 0);
+  color: aliceblue;
   min-width: 40vw;
   min-height: 70vh;
   display: grid;
@@ -18,5 +20,8 @@ body{
 }
 .start ul li{
 list-style: none;
+}
+input,label{
+  cursor: pointer;
 }
 
