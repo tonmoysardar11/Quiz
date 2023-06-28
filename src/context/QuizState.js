@@ -8,16 +8,28 @@ const QuizState = (props) => {
     const [qlist, setqlist] = useState([]);
     const [activeno, setactiveno] = useState(1);
     const [qno, setqno] = useState(5);
-    const [timer, settimer] = useState(30);
+    const [timer, settimer] = useState(15);
     const [option, setoption] = useState('');
     const [cnfstate, setcnfstate] = useState(false);
     const [disabled, setdisabled] = useState(false);
     const [btndisabled, setbtndisabled] = useState(true);
-    const [point, setpoint] = useState(0);
+    const [right, setright] = useState(0);
+    const [wrong, setwrong] = useState(0);
 
 
 
+    const reset = () => {
+        setactiveno(1);
+        setbtndisabled(true);
+        setcnfstate(false);
+        setdisabled(false);
+        setoption('');
+        setqlist([]);
+        setqno(5);
+        setright(0);
+        setwrong(0);
 
+    }
     const qnochange = (e) => {
         setqno(Number(e.target.value));
     }
@@ -46,11 +58,12 @@ const QuizState = (props) => {
         setbtndisabled(true)
         setdisabled(true)
         setcnfstate(true)
-        qlist[activeno - 1].answer===option?setpoint(point+1):setpoint(point)
+        qlist[activeno - 1].answer === option ? setright(right + 1) : setwrong(wrong + 1)
     }
 
+
     return (
-        <qContext.Provider value={{ setqno,qno, qnochange, play, qlist, activeno, next, timer, option, anschange, cnf,cnfstate,disabled,btndisabled,point  }}>
+        <qContext.Provider value={{ setqno, qno, qnochange, play, qlist, activeno, next, timer, option, anschange, cnf, cnfstate, disabled, btndisabled, right, wrong, reset }}>
             {props.children}
         </qContext.Provider>
     )
