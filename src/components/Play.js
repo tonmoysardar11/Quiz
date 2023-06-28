@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Play = () => {
 
   const context = useContext(qContext);
-  const {qno,qlist, activeno, next, timer, anschange, option, cnf, cnfstate,disabled,btndisabled,finish } = context;
+  const {qno,qlist, activeno, next, timer, anschange, option, cnf, cnfstate,disabled,btndisabled} = context;
 
   return (
     <div className='d-flex justify-content-center align-items-center flex-column'>
@@ -54,9 +54,9 @@ const Play = () => {
           </i>
         </button>
 
-        {activeno===qno?<Link className='btn btn-info my-3' role='button' to="/finish">Play <i className="fa-solid fa-play"></i></Link>:<button
+        {activeno===qno?<Link  className='btn btn-info my-3' role='button' to="/finish">Play <i className="fa-solid fa-play"></i></Link>:<button
           className={cnfstate ? 'btn btn-info mx-3' : 'btn btn-info mx-3 disabled'}
-          onClick={activeno===qno?finish:next}
+          onClick={activeno===qno?'':next}
         >
           {activeno===qno?'Finish':'Next'}
           <i className="fa-solid fa-play mx-1">
