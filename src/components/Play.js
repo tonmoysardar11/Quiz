@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 const Play = () => {
 
   const context = useContext(qContext);
-  const {qno,qlist, activeno, next, timer, anschange, option, cnf, cnfstate,disabled,btndisabled} = context;
+  const {qno,qlist, activeno, next, timer, anschange, option, cnf, cnfstate,disabled,btndisabled,click} = context;
 
   return (
     <div className='d-flex justify-content-center align-items-center flex-column'>
-      <div className='d-flex justify-content-between align-items-center w-100'>
-      <h6 className='my-3'>Time Left: {timer}</h6>
+      <div className='d-flex justify-content-start align-items-center w-100'>
+      <span className='my-3' style={{fontSize:'16px'}}>Time Left: <span style={timer<5?{color:'red'}:{}}>{timer}</span></span>
       </div>
       <h4>Question No. {activeno} </h4>
       <b className='my-2'>{qlist[activeno - 1].question}</b>
@@ -54,7 +54,7 @@ const Play = () => {
           </i>
         </button>
 
-        {activeno===qno?<Link  className='btn btn-info my-3' role='button' to="/finish">Play <i className="fa-solid fa-play"></i></Link>:<button
+        {activeno===qno?<Link ref={click} className='btn btn-info my-3' role='button' to="/finish">Play <i className="fa-solid fa-play"></i></Link>:<button ref={click}
           className={cnfstate ? 'btn btn-info mx-3' : 'btn btn-info mx-3 disabled'}
           onClick={activeno===qno?'':next}
         >
